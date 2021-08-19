@@ -12,7 +12,7 @@ const politicsJSON = [
 				party: 'A',
 				photo:
 				[
-					{ url: '../images/biden.jpg', legend: 'Biden', class: 'big' }
+					{ url: '../images/biden.jpg', legend: 'Biden', class: 'big', position: 'Vereador' }
 				]
 			},
 			// Second Politician
@@ -22,7 +22,7 @@ const politicsJSON = [
 				party: 'B',
 				photo:
 				[
-					{ url: '../images/obama.jpg', legend: 'Obama', class: 'big' }
+					{ url: '../images/obama.jpg', legend: 'Obama', class: 'big', position: 'Vereador' }
 				]
 			}
 		]
@@ -42,8 +42,8 @@ const politicsJSON = [
 				vice: 'Obama',
 				photo:
 				[
-					{ url: '../images/biden.jpg', legend: 'Biden', big: true },
-					{ url: '../images/obama.jpg', legend: 'Obama', small: true }
+					{ url: '../images/biden.jpg', legend: 'Biden', big: true, position: 'Prefeito' },
+					{ url: '../images/obama.jpg', legend: 'Obama', small: true, position: 'Vice-Prefeito' }
 				]
 			},
 			// Second Politician
@@ -54,8 +54,8 @@ const politicsJSON = [
 				vice: 'Biden',
 				photo:
 				[
-					{ url: '../images/obama.jpg', legend: 'Obama', big: true },
-					{ url: '../images/biden.jpg', legend: 'Biden', small: true }
+					{ url: '../images/obama.jpg', legend: 'Obama', big: true, position: 'Prefeito' },
+					{ url: '../images/biden.jpg', legend: 'Biden', small: true, position: 'Vice-Prefeito'}
 				]
 			}
 		]

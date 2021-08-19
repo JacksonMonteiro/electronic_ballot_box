@@ -9,7 +9,7 @@ const qsa = e => document.querySelectorAll( e );
 	let numbers = qs( '.content-left-3' );
 	let description = qs( '.content-left-4 ' );
 	let warn = qs( '.info' );
-
+	let whiteVote = false;
 
 	// Right
 	let contentRight = qs( '.content-right' );
@@ -20,6 +20,7 @@ const qsa = e => document.querySelectorAll( e );
 
 	function beginStage() {
 		let stage = politicsJSON[actualStage];
+		numbers.style.display = 'block';
 		let htmlNumber = '';
 
 		for (let i = 0; i < stage.numbers; i++) {
@@ -61,7 +62,7 @@ function updateInterface() {
 			htmlPhotos += 
 				`<div class="right-image ${politician.photo[i].class}">
 					<img src="assets/images/${politician.photo[i].url}" alt="${politician.photo[i].legend}">
-					${politicsJSON[ actualStage ].title}
+					${politician.photo[i].position}
 				</div>`
 ;		}
 
@@ -92,18 +93,45 @@ function clicked( n ) {
 	}
 }
 
-/*
-function white() {
 
+function white() {
+	if (typedNumber === '') {
+		whiteVote = true;
+		vote.style.display = 'block';
+		warn.style.display = 'block'
+		numbers.style.display = 'none';
+		description.innerHTML = '<div class="big-warn blink">Voto em branco</div>'
+	}
 }
 
 function del() {
-
+	beginStage();
 }
 
-function confirm() {
 
-}*/
+function confirm() {
+	let stage = politicsJSON[ actualStage ];
+	let confirmedVote = false
+
+	if (whiteVote === true) {
+		confirmedVote = true;
+		console.log('Voto Branco');
+	} else if (typedNumber.length === stage.numbers) {
+		confirmedVote = true;
+		console.log('Voto confirmado')
+	}
+
+	if (confirmedVote) {
+		actualStage++;
+		
+		if (politicsJSON[actualStage] !== undefined) {
+			typedNumber = '';
+			beginStage();
+		} else {
+			qs( '.screen' ).innerHTML = '<div class="end blink">Fim</div>' ;
+		}
+	}
+}
 
 // Function Execution
 beginStage();
